@@ -70,7 +70,7 @@ echo -e $giallo '[*] Installing GPG Graphical Assistant' $default
 apt-get install gpa -y -y > $output_device
 
 echo -e $giallo "[*] Installing Audio Video Softwares..." $default
-apt-get install gimp audacity cheese vlc kodi -y > $output_device
+apt-get install gimp audacity cheese vlc kodi libavcodec-extra -y > $output_device
 
 echo -e $giallo "[*] Installing Internet Softwares..." $default
 apt-get install driftnet etherape ettercap icedove kismet remmina hexchat mutt wireshark ssvnc thc xhydra -y > $output_device
