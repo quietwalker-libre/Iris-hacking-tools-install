@@ -208,4 +208,7 @@ apt-get install bulk_extractor chkrootkit rkunter volafox scalpel photorec dc3dd
 echo -e $verde 'System upgrade...'
 sudo apt-get upgrade 
 
+echo "[*] Pulizia della cache..."
+apt-cache clean && apt-get autoclean && apt-get autoremove
+
 echo -e $rosso 'You should reboot your computer now!\nAfter reboot you can use Iris as Hacking System\n Enjoy!'
