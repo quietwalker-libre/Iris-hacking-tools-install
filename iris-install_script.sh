@@ -52,11 +52,12 @@ echo -e $azzurro "                     For www.irisproject.org "$default && echo
 echo -e $giallo "                     email: quietwalker@parrotsec.org"$default
 sleep 2
 
+##pulisce lo schermo
 clear
 
 echo -e $default 'Are You Running this script from an Iris Distro? (1=yes, 2=no)'
 read scelta
-
+##modifica la lista dei repository nel caso in cui la distro in uso non sia Iris
 if [ "$scelta" = "2" ]; then
 	echo 'Adding Iris Repo to source list'
 	sudo echo 'deb http://http://archive.irisproject.org/iris/ stable main' > /etc/apt/sources.list
@@ -116,7 +117,7 @@ echo -e $giallo '[*] Installing Information Gathering Tools ---> SNMP' $default
 apt-get install braa onesixtyone snmpcheck -y > $output_device
 
 echo -e $giallo '[*] Installing Information Gathering Tools ---> SSL' $default
-apt-get install sslcaudit ssldump sslh sslscan sslyze tlssled -y > $output_device
+apt-get install sslcaudit ssldump sslh sslscan sslstrip sslyze tlssled -y > $output_device
 
 echo -e $giallo '[*] Installing Information Gathering Tools ---> Active Host Identification' $default
 apt-get install ipscan arping cdpsnarf miranda fping hping3 unicornscan wol-e xprobe2 ncat thc-ipv6 -y > $output_device
@@ -131,7 +132,7 @@ echo -e $giallo '[*] Installing Vulnerability Assessment Tools ---> OpenVAS' $de
 apt-get install openvas -y > $output_device
 
 echo -e $giallo '[*] Installing Vulnerability Assessment Tools ---> Stress Test' $default
-apt-get install dhcpig iaxflood inviteflood macof siege slowloris t50 thc-ssl-dos -y > $output_device
+apt-get install dhcping iaxflood inviteflood macof siege slowloris t50 thc-ssl-dos -y > $output_device
 
 echo -e $giallo '[*] Installing Vulnerability Assessment Tools ---> Cisco Tools' $default
 apt-get install cisco-auditing-tool cisco-global-exploiter cisco-ocs cisco-torch yersinia copy-router-config -y > $output_device
@@ -140,7 +141,7 @@ echo -e $giallo '[*] Installing Vulnerability Assessment Tools ---> Fuzzing Tool
 apt-get install sipmyarmyknife bed powerfuzzer sfuzz -y > $output_device
 
 echo -e $giallo '[*] Installing Vulnerability Assessment Tools ---> VOIP Tools' $default
-apt-get install voiphopper sipvicious enumiax iaxflood inviteflood protos-sip rtpbreak sctpscan sipp sipsak -y > $output_device
+apt-get install voiphopper sipvicious enumiax protos-sip rtpbreak sctpscan sipp sipsak -y > $output_device
 
 echo -e $giallo '[*] Installing Vulnerability Assessment Tools ---> Other Tools' $default
 apt-get install golismero inurlbr tdsog -y > $output_device
@@ -155,13 +156,13 @@ echo -e $giallo '[*] Installing Web Application Tools ---> Web Application Proxy
 apt-get install paros proxystrike -y > $output_device
 
 echo -e $giallo '[*] Installing Web Application Tools ---> Web Application Vulnerability Scanner' $default
-apt-get install cadaver davtest deblaze fimap jsql powerfuzzer skipfish wapiti webshag websploit xsser whatweb -y > $output_device
+apt-get install cadaver davtest deblaze fimap jsql skipfish wapiti webshag websploit xsser whatweb -y > $output_device
 
 echo -e $giallo '[*] Installing Web Application Tools ---> Others' $default
 apt-get install httrack -y > $output_device
 
 echo -e $giallo '[*] Installing Database Analysis Tools' $default
-apt-get install sqlmap hexorbase jsql mdb-export mdb-hexdump-mdb-parsecsv mdb-sql mdb-tables oscanner sqlninja sqlsus -y > $output_device
+apt-get install sqlmap hexorbase mdbtools oscanner sqlninja sqlsus -y > $output_device
 
 echo -e $giallo '[*] Exploiting Tools' $default
 echo -e $rosso "!!! It's temporarily impossible to install exploitation tools due to license issues...we are working hard. Stay tuned" $default && echo ""
@@ -182,10 +183,10 @@ echo -e $giallo '[*] Installing Password Attacks Tools ---> Online Attacks' $def
 apt-get install  cisco-auditing-tool hydra -y > $output_device
 
 echo -e $giallo '[*] Installing Password Attacks Tools ---> Offline Attacks' $default
-apt-get install ophcrack findmyhash cmospwd fcrackzip hashid hash-identifier rainbowcrack sipcrack sucrack medusa pyrit -y > $output_device
+apt-get install findmyhash cmospwd fcrackzip hashid hash-identifier rainbowcrack medusa pyrit -y > $output_device
 
 echo -e $giallo '[*] Installing Wireless Testing Tools ---> Wireless Tools' $default
-apt-get install ubertooth-util hckrf airmode bully cowpatty eapmd5pass fern-wifi-cracker wifi-honey wifiarp wifite reaver pixiewps -y > $output_device
+apt-get install ubertooth-util hackrf airmode bully cowpatty eapmd5pass fern-wifi-cracker wifi-honey wifiarp wifite reaver pixiewps -y > $output_device
 
 echo -e $giallo '[*] Installing Wireless Testing Tools ---> Software Defined Radio' $default
 apt-get install rfcat gnuradio -y > $output_device
@@ -203,12 +204,9 @@ echo -e $giallo '[*] Installing Sniffing and Spoofing Tools ---> Spoofing' $defa
 apt-get install sslstrip  -y > $output_device
 
 echo -e $giallo '[*] Installing Forensic Tools ---> Spoofing' $default
-apt-get install bulk_extractor chkrootkit rkunter volafox scalpel photorec dc3dd ddrescue -y > $output_device
+apt-get install bulk-extractor chkrootkit rkhunter volafox scalpel photorec dc3dd ddrescue -y > $output_device
 
 echo -e $verde 'System upgrade...'
 sudo apt-get upgrade 
-
-echo "[*] Pulizia della cache..."
-apt-cache clean && apt-get autoclean && apt-get autoremove
 
 echo -e $rosso 'You should reboot your computer now!\nAfter reboot you can use Iris as Hacking System\n Enjoy!'
