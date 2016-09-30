@@ -177,7 +177,7 @@ echo -e $giallo '[*] Installing Mantaining Access Tools ---> Tunnelling Tools' $
 apt-get install dns2tcp iodine proxychains proxytunnel udptunnel -y > $output_device
 
 echo -e $giallo '[*] Installing Password Attacks Tools ---> Dictionary Attacks' $default
-apt-get install cewl crunch -y > $output_device
+apt-get install cewl crunch john -y > $output_device
 
 echo -e $giallo '[*] Installing Password Attacks Tools ---> Online Attacks' $default
 apt-get install  cisco-auditing-tool hydra -y > $output_device
